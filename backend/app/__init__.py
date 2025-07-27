@@ -5,6 +5,7 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from app.config.settings import Config
 
+
 # Initialize extensions
 db = SQLAlchemy()
 migrate = Migrate()
@@ -24,6 +25,7 @@ def create_app(config_class=Config):
     
     # Register blueprints (routes)
     from app.routes import main_bp
+    from app.models import User, Project, Task, TeamMember, Prerequisite, TaskTag, ProjectTask
     app.register_blueprint(main_bp, url_prefix='/api')
     
     return app
